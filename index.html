@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student support website helping absent students catch up with assignments and resources">
+  <meta name="keywords" content="student support, homework help, assignments, education">
+  <title>Student Support Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Add Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-graduation-cap"></i> Student Support Hub</h1>
+      <p class="tagline">Never miss a lesson - stay updated anywhere, anytime</p>
+    </div>
+  </header>
+
+  <nav id="navbar">
+    <div class="container">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="#subjects"><i class="fas fa-book"></i> Subjects</a>
+        <a href="#resources"><i class="fas fa-download"></i> Resources</a>
+        <a href="#feedback"><i class="fas fa-comment"></i> Feedback</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <h2>Welcome Back, Student!</h2>
+        <p>Your one-stop hub for catching up on missed classes. Find assignments, resources, and daily updates all in one place.</p>
+        <div class="stats-container">
+          <div class="stat-box">
+            <span class="stat-number" id="subjectCount">3</span>
+            <span class="stat-label">Active Subjects</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="resourceCount">5</span>
+            <span class="stat-label">Resources</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="updateCount">12</span>
+            <span class="stat-label">Updates This Week</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subjects Section with Filter -->
+    <section id="subjects" class="subjects-section">
+      <div class="container">
+        <h2><i class="fas fa-book-open"></i> Today's Subjects</h2>
+        
+        <div class="filter-bar">
+          <input type="text" id="searchInput" placeholder="🔍 Search subjects or topics..." class="search-input">
+          <select id="subjectFilter" class="filter-select">
+            <option value="all">All Subjects</option>
+            <option value="math">Math</option>
+            <option value="english">English</option>
+            <option value="science">Science</option>
+          </select>
+        </div>
+
+        <div class="subjects-grid" id="subjectsGrid">
+          <!-- Subjects will be loaded dynamically via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+      <div class="container">
+        <h2><i class="fas fa-folder-open"></i> Learning Resources</h2>
+        
+        <div class="resource-categories">
+          <button class="category-btn active" data-category="all">All</button>
+          <button class="category-btn" data-category="worksheets">Worksheets</button>
+          <button class="category-btn" data-category="notes">Notes</button>
+          <button class="category-btn" data-category="videos">Videos</button>
+        </div>
+
+        <div class="resources-grid" id="resourcesGrid">
+          <!-- Resources will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback Section with Form -->
+    <section id="feedback" class="feedback-section">
+      <div class="container">
+        <h2><i class="fas fa-star"></i> Student Feedback</h2>
+        
+        <div class="feedback-container">
+          <div class="feedback-form">
+            <div class="form-group">
+              <label for="studentName">Your Name (optional)</label>
+              <input type="text" id="studentName" placeholder="Enter your name">
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackType">Feedback Type</label>
+              <select id="feedbackType">
+                <option value="general">General Feedback</option>
+                <option value="suggestion">Suggestion</option>
+                <option value="issue">Report an Issue</option>
+                <option value="question">Question</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackText">Your Message</label>
+              <textarea id="feedbackText" rows="4" placeholder="Tell us what you think..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="urgentCheck"> 
+                <span>Mark as urgent</span>
+              </label>
+            </div>
+            
+            <button id="feedbackBtn" class="btn-primary">
+              <i class="fas fa-paper-plane"></i> Send Feedback
+            </button>
+            <div id="message" class="message-box"></div>
+          </div>
+
+          <div class="feedback-info">
+            <h3>Quick Help</h3>
+            <ul>
+              <li><i class="fas fa-clock"></i> Response time: 24 hours</li>
+              <li><i class="fas fa-envelope"></i> Email: support@studentshub.com</li>
+              <li><i class="fas fa-comments"></i> Live chat: Weekdays 9AM-5PM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4><i class="fas fa-graduation-cap"></i> Student Support Hub</h4>
+          <p>Helping students succeed, one lesson at a time.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#subjects">Subjects</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Student Support Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
