@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyOS | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="main-dashboard">
+        <header class="top-nav">
+            <div class="user-profile"></div>
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Canva">
+            </div>
+            <div class="notif-bell">
+                🔔<span class="notif-badge">1</span>
+            </div>
+        </header>
+
+        <main class="content-layout">
+            <div class="side-nav">
+                <button class="menu-btn" onclick="openModal('notes-modal')">Daily Recap</button>
+                <button class="menu-btn" onclick="openModal('todo-modal')">To DO</button>
+                <button class="menu-btn" onclick="openModal('classes-modal')">Classes</button>
+            </div>
+
+            <div class="calendar-container">
+                <div class="calendar-paper">
+                    <div class="calendar-header">
+                        <h2 id="month-display">DECEMBER</h2>
+                        <span id="year-display">2026</span>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+                    </div>
+                    <div class="calendar-days" id="calendar-days">
+                        </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="subject-page" class="page-overlay">
+        <header class="top-nav">
+            <div class="subject-tag" id="current-subject-name">Math</div>
+        </header>
+        <div class="subject-grid">
+            <div class="sub-box"><h3>Lessons</h3></div>
+            <div class="sub-box"><h3>Files</h3></div>
+            <div class="sub-box"><h3>Discussion</h3></div>
+        </div>
+        <button class="back-btn" onclick="closeSubject()">← BACK</button>
+    </div>
+
+    <div class="modal-bg" id="modal-bg" onclick="closeAllModals()"></div>
+
+    <div class="modal-content" id="classes-modal">
+        <h3>Select a Class</h3>
+        <div class="class-selection-grid">
+            <button onclick="openSubject('Math')">Math</button>
+            <button onclick="openSubject('Chemistry')">Chemistry</button>
+            <button onclick="openSubject('Physics')">Physics</button>
+            <button onclick="openSubject('Biology')">Biology</button>
+            <button onclick="openSubject('Geography')">Geography</button>
+            <button onclick="openSubject('History')">History</button>
+        </div>
+    </div>
+
+    <div class="modal-content" id="todo-modal">
+        <h3>To-Do List</h3>
+        <input type="text" id="todo-in" placeholder="New task...">
+        <button onclick="addTask()">Add Task</button>
+        <div id="todo-list"></div>
+    </div>
+
+    <div class="modal-content" id="notes-modal">
+        <h3>Daily Recap / Notes</h3>
+        <textarea id="notes-area" rows="10" placeholder="Write your recap here..."></textarea>
+        <button onclick="closeAllModals()">Save Session</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
