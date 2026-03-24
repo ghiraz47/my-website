@@ -30,7 +30,7 @@
             <div class="calendar-container">
                 <div class="calendar-paper">
                     <div class="calendar-header">
-                        <h2 id="month-display">DECEMBER</h2>
+                        <h2 id="month-display">MARCH</h2>
                         <span id="year-display">2026</span>
                     </div>
                     <div class="calendar-weekdays">
@@ -82,9 +82,11 @@
     </div>
 
     <div class="modal-content" id="feedback-modal">
-        <h3>Submit Feedback</h3>
-        <textarea id="feedback-text" rows="5" placeholder="Tell us what you think..."></textarea>
-        <button onclick="sendFeedback()">Send Feedback</button>
+        <h3 style="color: white; margin-bottom: 15px;">Submit Feedback</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <textarea id="feedback-text" rows="5" placeholder="Type your feedback here..."></textarea>
+            <button class="send-btn" onclick="sendFeedback()">Send Feedback</button>
+        </div>
     </div>
 
     <button class="feedback-trigger" onclick="openModal('feedback-modal')">Feedback</button>
