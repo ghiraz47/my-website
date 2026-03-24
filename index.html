@@ -36,8 +36,7 @@
                     <div class="calendar-weekdays">
                         <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
                     </div>
-                    <div class="calendar-days" id="calendar-days">
-                        </div>
+                    <div class="calendar-days" id="calendar-days"></div>
                 </div>
             </div>
         </main>
@@ -81,6 +80,14 @@
         <textarea id="notes-area" rows="10" placeholder="Write your recap here..."></textarea>
         <button onclick="closeAllModals()">Save Session</button>
     </div>
+
+    <div class="modal-content" id="feedback-modal">
+        <h3>Submit Feedback</h3>
+        <textarea id="feedback-text" rows="5" placeholder="Tell us what you think..."></textarea>
+        <button onclick="sendFeedback()">Send Feedback</button>
+    </div>
+
+    <button class="feedback-trigger" onclick="openModal('feedback-modal')">Feedback</button>
 
     <script src="script.js"></script>
 </body>
