@@ -24,8 +24,8 @@ function closeSubject() {
 // CALENDAR GENERATOR
 function generateCalendar() {
     const now = new Date();
-    const month = now.toLocaleString('default', { month: 'long' }).toUpperCase();
-    document.getElementById('month-display').innerText = month;
+    const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+    document.getElementById('month-display').innerText = monthNames[now.getMonth()];
     document.getElementById('year-display').innerText = now.getFullYear();
 
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
@@ -42,12 +42,26 @@ function generateCalendar() {
 // TO-DO LOGIC
 function addTask() {
     const input = document.getElementById('todo-in');
-    if(input.value === "") return;
+    if(input.value.trim() === "") return;
     const list = document.getElementById('todo-list');
     const item = document.createElement('div');
     item.innerText = "- " + input.value;
+    item.style.color = "white";
+    item.style.padding = "5px 0";
     list.appendChild(item);
     input.value = "";
+}
+
+// FEEDBACK LOGIC
+function sendFeedback() {
+    const text = document.getElementById('feedback-text');
+    if(text.value.trim() === "") {
+        alert("Please write something before sending.");
+        return;
+    }
+    alert("Feedback sent! Thank you.");
+    text.value = "";
+    closeAllModals();
 }
 
 // Run on start
