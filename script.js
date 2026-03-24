@@ -52,15 +52,24 @@ function addTask() {
     input.value = "";
 }
 
-// FEEDBACK LOGIC
+// FEEDBACK LOGIC - FIXED
 function sendFeedback() {
-    const text = document.getElementById('feedback-text');
-    if(text.value.trim() === "") {
-        alert("Please write something before sending.");
+    const feedbackBox = document.getElementById('feedback-text');
+    
+    // 1. Check if it's empty
+    if(feedbackBox.value.trim() === "") {
+        alert("Please enter feedback before sending.");
         return;
     }
-    alert("Feedback sent! Thank you.");
-    text.value = "";
+
+    // 2. Simulate sending
+    console.log("Feedback Sent: " + feedbackBox.value);
+    alert("Feedback sent successfully!");
+
+    // 3. Clear the text area so it's empty next time
+    feedbackBox.value = "";
+
+    // 4. Close the modal and the background overlay to return home
     closeAllModals();
 }
 
