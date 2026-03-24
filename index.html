@@ -5,88 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyOS | Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <!-- Main Dashboard -->
         <div id="main-dashboard" class="page">
             <header class="top-nav">
-                <div class="nav-left">
-                    <div class="user-profile" role="button" aria-label="User profile"></div>
-                    <h1 class="app-title">StudyOS</h1>
-                </div>
-                
+                <div class="user-profile"></div>
                 <div class="search-box">
-                    <span class="search-icon" aria-hidden="true">🔍</span>
-                    <input type="text" placeholder="Search..." aria-label="Search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Canva">
                 </div>
-                
-                <div class="nav-right">
-                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                        <span class="theme-icon">🌙</span>
-                    </button>
-                    <div class="notif-bell" role="button" aria-label="Notifications">
-                        <span class="bell-icon">🔔</span>
-                        <span class="notif-badge" id="notif-count">1</span>
-                    </div>
+                <div class="notif-bell">
+                    🔔<span class="notif-badge">1</span>
                 </div>
             </header>
 
             <main class="content-layout">
-                <nav class="side-nav">
-                    <button class="menu-btn" onclick="openModal('notes-modal')" aria-label="Daily Recap">
-                        <span class="btn-icon">📝</span>
-                        <span class="btn-text">Daily Recap</span>
-                    </button>
-                    <button class="menu-btn" onclick="openModal('todo-modal')" aria-label="To-Do List">
-                        <span class="btn-icon">✅</span>
-                        <span class="btn-text">To-Do</span>
-                    </button>
-                    <button class="menu-btn" onclick="openModal('classes-modal')" aria-label="Classes">
-                        <span class="btn-icon">📚</span>
-                        <span class="btn-text">Classes</span>
-                    </button>
-                    <button class="menu-btn" onclick="openModal('settings-modal')" aria-label="Settings">
-                        <span class="btn-icon">⚙️</span>
-                        <span class="btn-text">Settings</span>
-                    </button>
-                </nav>
+                <div class="side-nav">
+                    <button class="menu-btn" onclick="openModal('notes-modal')">Daily Recap</button>
+                    <button class="menu-btn" onclick="openModal('todo-modal')">To DO</button>
+                    <button class="menu-btn" onclick="openModal('classes-modal')">Classes</button>
+                    <button class="menu-btn" onclick="openFeedbackModal()">Feedback</button>
+                </div>
 
-                <div class="main-content">
-                    <section class="calendar-container">
-                        <div class="calendar-paper">
-                            <div class="calendar-header">
-                                <button class="calendar-nav" onclick="changeMonth(-1)" aria-label="Previous month">‹</button>
-                                <div class="calendar-title">
-                                    <h2 id="month-display">DECEMBER</h2>
-                                    <span id="year-display">2026</span>
-                                </div>
-                                <button class="calendar-nav" onclick="changeMonth(1)" aria-label="Next month">›</button>
-                            </div>
-                            <div class="calendar-weekdays">
-                                <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
-                            </div>
-                            <div class="calendar-days" id="calendar-days"></div>
+                <div class="calendar-container">
+                    <div class="calendar-paper">
+                        <div class="calendar-header">
+                            <h2 id="month-display">DECEMBER</h2>
+                            <span id="year-display">2025</span>
                         </div>
-                    </section>
-
-                    <section class="stats-container">
-                        <div class="stat-card">
-                            <h3>Today's Tasks</h3>
-                            <div class="stat-number" id="today-tasks-count">0</div>
+                        <div class="calendar-weekdays">
+                            <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
                         </div>
-                        <div class="stat-card">
-                            <h3>Completed</h3>
-                            <div class="stat-number" id="completed-tasks-count">0</div>
+                        <div class="calendar-days" id="calendar-days">
                         </div>
-                        <div class="stat-card">
-                            <h3>Study Streak</h3>
-                            <div class="stat-number" id="study-streak">1</div>
-                        </div>
-                    </section>
+                    </div>
                 </div>
             </main>
         </div>
@@ -94,117 +48,69 @@
         <!-- Subject Page -->
         <div id="subject-page" class="page-overlay">
             <header class="top-nav">
-                <button class="back-btn" onclick="closeSubject()" aria-label="Back to dashboard">
-                    ← BACK
-                </button>
-                <div class="subject-tag" id="current-subject-name">Math</div>
+                <div class="user-profile"></div>
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Canva">
+                </div>
+                <div class="notif-bell">
+                    🔔<span class="notif-badge">1</span>
+                </div>
             </header>
             
             <main class="subject-content">
-                <div class="subject-grid">
-                    <article class="sub-box">
-                        <h3>📚 Lessons</h3>
-                        <div class="subject-list" id="lessons-list">
-                            <p>No lessons available</p>
-                        </div>
-                    </article>
-                    <article class="sub-box">
-                        <h3>📁 Files</h3>
-                        <div class="subject-list" id="files-list">
-                            <p>No files available</p>
-                        </div>
-                    </article>
-                    <article class="sub-box">
-                        <h3>💬 Discussion</h3>
-                        <div class="subject-list" id="discussion-list">
-                            <p>No discussions available</p>
-                        </div>
-                    </article>
+                <div class="subject-header">
+                    <div class="subject-tag" id="current-subject-name">Math</div>
                 </div>
+                
+                <div class="subject-grid">
+                    <div class="sub-box"><h3>Lessons</h3></div>
+                    <div class="sub-box"><h3>Files</h3></div>
+                    <div class="sub-box"><h3>Discussion</h3></div>
+                </div>
+                
+                <button class="back-btn" onclick="closeSubject()">← BACK</button>
             </main>
         </div>
 
         <!-- Modal Background -->
-        <div class="modal-bg" id="modal-bg" onclick="closeAllModals()" aria-hidden="true"></div>
+        <div class="modal-bg" id="modal-bg" onclick="closeAllModals()"></div>
 
         <!-- Classes Modal -->
-        <div class="modal-content" id="classes-modal" role="dialog" aria-labelledby="classes-title">
-            <h3 id="classes-title">Select a Class</h3>
+        <div class="modal-content" id="classes-modal">
+            <h3>Select a Class</h3>
             <div class="class-selection-grid">
-                <button onclick="openSubject('Math')" aria-label="Math class">
-                    <span class="class-icon">🔢</span>
-                    <span>Math</span>
-                </button>
-                <button onclick="openSubject('Chemistry')" aria-label="Chemistry class">
-                    <span class="class-icon">⚗️</span>
-                    <span>Chemistry</span>
-                </button>
-                <button onclick="openSubject('Physics')" aria-label="Physics class">
-                    <span class="class-icon">⚡</span>
-                    <span>Physics</span>
-                </button>
-                <button onclick="openSubject('Biology')" aria-label="Biology class">
-                    <span class="class-icon">🧬</span>
-                    <span>Biology</span>
-                </button>
-                <button onclick="openSubject('Geography')" aria-label="Geography class">
-                    <span class="class-icon">🌍</span>
-                    <span>Geography</span>
-                </button>
-                <button onclick="openSubject('History')" aria-label="History class">
-                    <span class="class-icon">📜</span>
-                    <span>History</span>
-                </button>
+                <button onclick="openSubject('Math')">Math</button>
+                <button onclick="openSubject('Chemistry')">Chemistry</button>
+                <button onclick="openSubject('Physics')">Physics</button>
+                <button onclick="openSubject('Biology')">Biology</button>
+                <button onclick="openSubject('Geography')">Geography</button>
+                <button onclick="openSubject('History')">History</button>
             </div>
         </div>
 
         <!-- To-Do Modal -->
-        <div class="modal-content" id="todo-modal" role="dialog" aria-labelledby="todo-title">
-            <h3 id="todo-title">To-Do List</h3>
-            <div class="todo-input-group">
-                <input type="text" id="todo-in" placeholder="New task..." aria-label="New task">
-                <button onclick="addTask()" aria-label="Add task">Add</button>
-            </div>
-            <div class="todo-filters">
-                <button onclick="filterTasks('all')" class="filter-btn active" data-filter="all">All</button>
-                <button onclick="filterTasks('active')" class="filter-btn" data-filter="active">Active</button>
-                <button onclick="filterTasks('completed')" class="filter-btn" data-filter="completed">Completed</button>
-            </div>
-            <div id="todo-list" class="todo-list"></div>
+        <div class="modal-content" id="todo-modal">
+            <h3>To-Do List</h3>
+            <input type="text" id="todo-in" placeholder="New task...">
+            <button onclick="addTask()">Add Task</button>
+            <div id="todo-list"></div>
         </div>
 
         <!-- Notes Modal -->
-        <div class="modal-content" id="notes-modal" role="dialog" aria-labelledby="notes-title">
-            <h3 id="notes-title">Daily Recap / Notes</h3>
-            <textarea id="notes-area" rows="10" placeholder="Write your recap here..." aria-label="Notes"></textarea>
-            <div class="modal-actions">
-                <button onclick="saveNotes()" class="primary-btn">Save Notes</button>
-                <button onclick="closeAllModals()" class="secondary-btn">Cancel</button>
-            </div>
+        <div class="modal-content" id="notes-modal">
+            <h3>Daily Recap / Notes</h3>
+            <textarea id="notes-area" rows="10" placeholder="Write your recap here..."></textarea>
+            <button onclick="closeAllModals()">Save Session</button>
         </div>
 
-        <!-- Settings Modal -->
-        <div class="modal-content" id="settings-modal" role="dialog" aria-labelledby="settings-title">
-            <h3 id="settings-title">Settings</h3>
-            <div class="settings-content">
-                <div class="setting-item">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" placeholder="Enter your name">
-                </div>
-                <div class="setting-item">
-                    <label for="study-goal">Daily Study Goal (minutes):</label>
-                    <input type="number" id="study-goal" min="1" max="480" value="60">
-                </div>
-                <div class="setting-item">
-                    <label>
-                        <input type="checkbox" id="notifications" checked>
-                        Enable notifications
-                    </label>
-                </div>
-            </div>
+        <!-- Feedback Modal -->
+        <div class="modal-content" id="feedback-modal">
+            <h3>Send Feedback</h3>
+            <textarea id="feedback-area" rows="8" placeholder="Write your feedback here..."></textarea>
             <div class="modal-actions">
-                <button onclick="saveSettings()" class="primary-btn">Save Settings</button>
-                <button onclick="closeAllModals()" class="secondary-btn">Cancel</button>
+                <button onclick="sendFeedback()" class="send-btn">Send</button>
+                <button onclick="closeFeedbackModal()" class="cancel-btn">Cancel</button>
             </div>
         </div>
     </div>
